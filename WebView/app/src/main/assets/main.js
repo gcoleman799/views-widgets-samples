@@ -47,3 +47,24 @@ function getData() {
 		}
 	})
 }
+
+function changeTemp(id){
+console.log("here");
+console.log(id);
+var form = document.getElementById("location");
+var currentLocation = form.options[form.selectedIndex].value;
+if (id == "Celcius"){
+			document.getElementById("currentTempC").innerText = data.london.currentTemp;
+
+
+} else {
+			document.getElementById("currentTempF").innerText = data.london.currentTemp;
+
+
+}
+//if celcius
+    //set celcius
+//if f
+    //set f
+
+}

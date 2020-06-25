@@ -21,7 +21,8 @@
     <title></title>
 </head>
 <body onload="getData()">
-<label for="location">Current Location:</label> <select class="selectMenu" id="location" name="location" onchange="getData()">
+<label for="location">Current Location:</label>
+<select class="selectMenu" id="location" name="location" onchange="getData()">
     <option value="newYork">
         New York
     </option>
@@ -32,6 +33,11 @@
         London
     </option>
 </select>
+<div id= "tempUnit">
+<span onclick=changeTemp(this.id,) id="Farenheit">°F</span>
+<a>&nbsp; | &nbsp;</a>
+<span onclick=changeTemp(this.id) id= "Celcius">°C</span>
+</div>
 <h1 id="title">Location</h1><img alt="weather" class="icon" id="icon" src="https://gcoleman799.github.io/res/drawable/sunny.png">
 <h2 class="currentTemp" id="currentTemp">Current Temp</h2>
 <h2 class="shortDescription" id="shortDescription">Short Description</h2>
