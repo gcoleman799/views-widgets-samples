@@ -29,14 +29,13 @@ import android.webkit.WebResourceResponse
 import android.webkit.WebView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.startActivity
-import androidx.webkit.*
+import androidx.webkit.WebViewAssetLoader
+import androidx.webkit.WebViewClientCompat
 import com.android.samples.webviewdemo.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-
     // Creating the custom WebView Client Class
-
     private class MyWebViewClient(private val assetLoader: WebViewAssetLoader) :
         WebViewClientCompat() {
         override fun shouldInterceptRequest(
@@ -60,7 +59,6 @@ class MainActivity : AppCompatActivity() {
             val shareIntent = Intent.createChooser(sendIntent, null)
             startActivity(mContext, shareIntent, null)
         }
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -95,6 +93,5 @@ class MainActivity : AppCompatActivity() {
 
         //Load the content
         binding.webview.loadUrl("https://gcoleman799.github.io/Asset-Loader/assets/index.html")
-
     }
 }
