@@ -22,14 +22,15 @@ import android.content.pm.ApplicationInfo
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.webkit.JavascriptInterface
 import android.webkit.WebResourceRequest
 import android.webkit.WebResourceResponse
 import android.webkit.WebView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.startActivity
-import androidx.webkit.*
+import androidx.webkit.WebViewAssetLoader
+import androidx.webkit.WebViewClientCompat
 import com.android.samples.webviewdemo.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -68,7 +69,7 @@ class MainActivity : AppCompatActivity() {
         // Configure asset loader with custom domain
         val assetLoader = WebViewAssetLoader.Builder()
             .setDomain("gcoleman799.github.io")
-            .addPathHandler("/Asset-Loader/", WebViewAssetLoader.AssetsPathHandler(this))
+            .addPathHandler("/Asset-Loader/assets/", WebViewAssetLoader.AssetsPathHandler(this))
             .addPathHandler("/res/", WebViewAssetLoader.ResourcesPathHandler(this))
             .build()
 
@@ -88,10 +89,10 @@ class MainActivity : AppCompatActivity() {
         // Enable Javascript
         binding.webview.settings.javaScriptEnabled = true
 
-        // Connect to Javascript Interface
+        //Connect to WebApp Interface
         binding.webview.addJavascriptInterface(WebAppInterface(this), "Weather")
 
-        // Load the content
-        binding.webview.loadUrl("https://gcoleman799.github.io/Asset-Loader/index.html")
+        //Load the content
+        binding.webview.loadUrl("https://gcoleman799.github.io/Asset-Loader/assets/index.html")
     }
 }
