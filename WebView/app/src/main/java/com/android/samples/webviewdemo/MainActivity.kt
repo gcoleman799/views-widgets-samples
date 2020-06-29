@@ -19,10 +19,8 @@ package com.android.samples.webviewdemo
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ApplicationInfo
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.webkit.JavascriptInterface
 import android.webkit.WebResourceRequest
 import android.webkit.WebResourceResponse
@@ -32,7 +30,6 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.webkit.WebViewAssetLoader
 import androidx.webkit.WebViewClientCompat
 import com.android.samples.webviewdemo.databinding.ActivityMainBinding
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     // Creating the custom WebView Client Class
@@ -59,6 +56,7 @@ class MainActivity : AppCompatActivity() {
             val shareIntent = Intent.createChooser(sendIntent, null)
             startActivity(mContext, shareIntent, null)
         }
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,7 +67,7 @@ class MainActivity : AppCompatActivity() {
         // Configure asset loader with custom domain
         val assetLoader = WebViewAssetLoader.Builder()
             .setDomain("gcoleman799.github.io")
-            .addPathHandler("/Asset-Loader/assets/", WebViewAssetLoader.AssetsPathHandler(this))
+            .addPathHandler("/assets/", WebViewAssetLoader.AssetsPathHandler(this))
             .addPathHandler("/res/", WebViewAssetLoader.ResourcesPathHandler(this))
             .build()
 
@@ -85,13 +83,14 @@ class MainActivity : AppCompatActivity() {
                 WebView.setWebContentsDebuggingEnabled(true)
             }
         }
+
         // Enable Javascript
         binding.webview.settings.javaScriptEnabled = true
 
-        //Connect to WebApp Interface
+        // Connect to Javascript Interface
         binding.webview.addJavascriptInterface(WebAppInterface(this), "Weather")
 
-        //Load the content
-        binding.webview.loadUrl("https://gcoleman799.github.io/Asset-Loader/assets/index.html")
+        // Load the content
+        binding.webview.loadUrl("https://gcoleman799.github.io/assets/index.html")
     }
 }

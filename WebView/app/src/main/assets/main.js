@@ -15,8 +15,7 @@
  */
 
 function sendAndroidMessage() {
-	Weather.sendMessage("The weather in " + `${document.getElementById("title").innerText}` + " today is " +
-	`${document.getElementById("description").innerText} `);
+	Weather.sendMessage("The weather in WebView City today is: " + document.getElementById("description").innerHTML);
 }
 
 function getData() {
